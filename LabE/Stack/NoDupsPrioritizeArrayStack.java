@@ -15,9 +15,13 @@ public class NoDupsPrioritizeArrayStack<T> extends ArrayStack<T> implements NoDu
 		}
 	}
 
-	public void moveToTop(T entry) {
+	public void moveToTop(T entry) {		
 		if(contains(entry)){
-			//move entry to top
+			int oldIndex = locateIndex(entry);
+			T oldEntry = stack[oldIndex];
+			removeGap(oldIndex);
+			createGap(0);
+			stack[0] = oldEntry;
 		}
 		else{
 			//add entry to top
@@ -41,5 +45,12 @@ public class NoDupsPrioritizeArrayStack<T> extends ArrayStack<T> implements NoDu
 				return i;
 		}
 		return -1;
+	}
+	
+	private void removeGap(int gapIndex){
+		
+	}
+	
+	private void createGap (int gapIndex){
 	}
 } 
